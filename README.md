@@ -4,6 +4,28 @@ audible-proximity
 Programatically play audio files on a portable computer, like the Raspberry Pi, based on its proximity to Bluetooth beacons.  If using a Pi, our [Prepare a headless Raspberry Pi from scratch](https://reelyactive.github.io/diy/pi-prep/) is the ideal starting point. 
 
 
+
+Pulse-Audio
+-----------
+
+To get Bluetooth headphones working, try this:
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install mpg123
+sudo apt install git
+sudo apt install npm
+sudo apt-get install pulseaudio pulseaudio-module-bluetooth
+sudo usermod -G bluetooth -a pi
+pulseaudio --start
+Run the bluetoothctl for initial setup of device (note, we’ll need to test the process of setting up the relationship between the device and the pi
+bluetoothctl
+```
+SET up pi to auto-login (using raspi-config), this will help the headphones connect
+
+
+
+
 Installation
 ------------
 
@@ -11,9 +33,7 @@ Clone this repository, and from its root folder, run `npm install` to install al
 
 If using a Pi, we recommend installing as follows:
 ```
-mkdir ~/reelyActive
-cd ~/reelyActive
-git clone https://github.com/reelyactive/audible-proximity.git
+git clone https://github.com/donundeen/audible-proximity.git
 cd audible-proximity
 npm install
 ```
@@ -55,9 +75,10 @@ Run-on-Boot
 -----------
 
 To run __audible-proximity__ automatically every time the Pi boots up:
-- Copy the unit file to the systemd system folder with the command `sudo cp units/audible-proximity-pi.service /lib/systemd/system`
-- Enable the audible-proximity service with the command `sudo systemctl enable audible-proximity-pi.service`
-- Start the audible-proximity service with the command `sudo systemctl start audible-proximity-pi.service`
+- `loginctl enable-linger pi`
+- Copy the unit file to the systemd system folder with the command `sudo cp units/audible-proximity-pi.service /lib/systemd/user/`
+- Enable the audible-proximity service with the command ` systemctl --user enable audible-proximity-pi.service`
+- Start the audible-proximity service with the command `systemctl --user start audible-proximity-pi.service`
 
 Note that it may be necessary to edit the WorkingDirectory and/or ExecStart paths to match the installed location of the __audible-proximity__ repository and npm, respectively.
 
