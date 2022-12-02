@@ -3,10 +3,9 @@ Description=Audible Proximity application by reelyActive
 After=network.target
 
 [Service]
-WorkingDirectory=/home/pi/reelyActive/audible-proximity
+WorkingDirectory=/home/pi/audible-proximity
 ExecStart=/usr/bin/npm start
 Restart=on-failure
-User=pi
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
