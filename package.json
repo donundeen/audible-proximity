@@ -34,6 +34,7 @@
     "advlib-interoperable": "^1.2.0",
     "barnowl": "^1.1.2",
     "barnowl-hci": "^0.3.1",
+    "dotenv": "^16.0.3",
     "kalmanjs": "^1.1.0",
     "mpg123": "^0.2.3",
     "raddec": ">=0.2.8"
