@@ -19,7 +19,7 @@
   "bin": "./bin/audible-proximity",
   "main": "./lib/audibleproximity.js",
   "scripts": {
-    "start": "node bin/audible-proximity > /home/pi/audout.txt",
+    "start": "node bin/audible-proximity",
     "debug": "node bin/audible-proximity-debug"
   },
   "repository": {
