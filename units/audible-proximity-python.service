@@ -1,0 +1,11 @@
+[Unit]
+Description=Audible Proximity application by reelyActive, tool for showing debug info on small oled screen
+After=network.target
+
+[Service]
+WorkingDirectory=/home/pi/audible-proximity/oledspi_python
+ExecStart=/usr/bin/python monshow.py
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
