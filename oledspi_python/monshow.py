@@ -1,6 +1,6 @@
 import time
 import sys
-sys.path.append('./drive')
+sys.path.append('/home/pi/audible-proximity/oledspi_python/drive')
 import SPI
 import SSD1305
 
