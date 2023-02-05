@@ -111,7 +111,7 @@ while True:
             topadd += 8
 
         # draw the chargeLevel
-        draw.txt((120, 116), chargeLevel, font=font, fill=255)
+        draw.text((120, 116), chargeLevel, font=font, fill=255)
             
         # Display image.
         disp.image(image)
