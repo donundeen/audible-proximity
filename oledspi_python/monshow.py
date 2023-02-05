@@ -94,7 +94,7 @@ while True:
             cline = subprocess.check_output(['tail', '-1', JUICEFILE]).decode("UTF-8") 
             cline = cline.replace("'","\"")
             data = json.loads(cline)
-            chargeLevel = data['chargeLevel']
+            chargeLevel = str(data['chargeLevel'])
         except:
             chargeLevel = "E"
             
