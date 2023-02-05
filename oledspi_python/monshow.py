@@ -88,14 +88,13 @@ font = ImageFont.truetype('/home/pi/audible-proximity/oledspi_python/04B_08__.TT
 while True:
 
     try:
+        chargeLevel = "E"
         # get the power info from juicemonitor file
-        line = subprocess.check_output(['tail', '-1', JUICEFILE]).decode("UTF-8") 
-        line = line.replace("'","\"")
-        print ("line::")
-        print (line)
-        print ("::endline\n")
-        data = json.loads(line)
-        print(data['chargeLevel'])
+        try:
+            cline = subprocess.check_output(['tail', '-1', JUICEFILE]).decode("UTF-8") 
+            cline = cline.replace("'","\"")
+            data = json.loads(cline)
+            chargeLevel = data['chargeLevel']
         
         # Draw a black filled box to clear the image.
         draw.rectangle((0,0,width,height), outline=0, fill=0)
@@ -107,10 +106,13 @@ while True:
         # Strips the newline character
         topadd = 0;
         for line in Lines:
-            # Write two lines of text.
+            # Write a line of text.
             draw.text((x, top + topadd), line.strip(),  font=font, fill=255)
             topadd += 8
 
+        # draw the chargeLevel
+        draw.txt((120, 116), chargeLevel, font=font, fill=255)
+            
         # Display image.
         disp.image(image)
         disp.display()
