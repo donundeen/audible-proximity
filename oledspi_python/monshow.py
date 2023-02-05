@@ -90,6 +90,7 @@ while True:
     try:
         # get the power info from juicemonitor file
         line = subprocess.check_output(['tail', '-1', JUICEFILE]) 
+        line = line.replace("'","\"")
         print ("line::")
         print (line)
         print ("::endline\n")
