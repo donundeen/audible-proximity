@@ -11,7 +11,7 @@ from PIL import ImageFont
 import subprocess
 
 MONFILE = "/home/pi/datamon.txt"
-
+JUICEFILE = "/home/pi/juicemonitor.txt"
 # Raspberry Pi pin configuration:
 RST = None     # on the PiOLED this pin isnt used
 # Note the following are only used with SPI:
@@ -87,6 +87,11 @@ font = ImageFont.truetype('/home/pi/audible-proximity/oledspi_python/04B_08__.TT
 while True:
 
     try:
+        # get the power info from juicemonitor file
+        line = subprocess.check_output(['tail', '-1', JUICEFILE]) 
+        print (line);
+        print ("\n");
+        
         # Draw a black filled box to clear the image.
         draw.rectangle((0,0,width,height), outline=0, fill=0)
 
