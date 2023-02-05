@@ -71,7 +71,7 @@ draw = ImageDraw.Draw(image)
 
 # Draw a black filled box to clear the image.
 # testing RECT size...
-draw.rectangle((0,0,width,height), outline=0, fill=128)
+draw.rectangle((0,0,width,height), outline=0, fill=0)
 
 # Draw some shapes.
 # First define some constants to allow easy resizing of shapes.
@@ -106,7 +106,7 @@ while True:
             chargeLevel = "E"
             
         # Draw a black filled box to clear the image.
-        draw.rectangle((0,0,width,height), outline=0, fill=128)
+        draw.rectangle((0,0,width,height), outline=0, fill=0)
 
         # Using readlines()
         file1 = open(MONFILE, 'r')
