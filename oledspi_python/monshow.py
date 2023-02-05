@@ -68,7 +68,8 @@ image = Image.new('1', (width, height))
 draw = ImageDraw.Draw(image)
 
 # Draw a black filled box to clear the image.
-draw.rectangle((0,0,width,height), outline=0, fill=0)
+# testing RECT size...
+draw.rectangle((0,0,width,height), outline=0, fill=128)
 
 # Draw some shapes.
 # First define some constants to allow easy resizing of shapes.
