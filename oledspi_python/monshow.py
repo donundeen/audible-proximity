@@ -1,5 +1,6 @@
 import time
 import sys
+import json
 sys.path.append('/home/pi/audible-proximity/oledspi_python/drive')
 import SPI
 import SSD1305
@@ -92,6 +93,8 @@ while True:
         print ("line::")
         print (line)
         print ("::endline\n")
+        data = json.loads(line)
+        print(data['chargeLevel'])
         
         # Draw a black filled box to clear the image.
         draw.rectangle((0,0,width,height), outline=0, fill=0)
