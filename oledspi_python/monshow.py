@@ -1,6 +1,7 @@
 import time
 import sys
 import json
+import math
 sys.path.append('/home/pi/audible-proximity/oledspi_python/drive')
 import SPI
 import SSD1305
@@ -77,6 +78,9 @@ bottom = height-padding
 # Move left to right keeping track of the current x position for drawing shapes.
 x = 0
 
+# counting elapsed "time"
+elapsed = 0;
+
 
 # Load default font.
 #font = ImageFont.load_default()
@@ -114,6 +118,11 @@ while True:
 
         # draw the chargeLevel
         draw.text((116, 12), chargeLevel, font=font, fill=255)
+        
+        #draw the elapsed seconds
+        elapsed += .1
+        draw.text((100, 20), str(math.floor(elapsed)), font=font, fill=255)
+        
         # Display image.
         disp.image(image)
         disp.display()
