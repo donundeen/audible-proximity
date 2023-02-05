@@ -106,7 +106,7 @@ while True:
             chargeLevel = "E"
             
         # Draw a black filled box to clear the image.
-        draw.rectangle((0,0,width,height), outline=0, fill=0)
+        draw.rectangle((0,0,width,height), outline=0, fill=128)
 
         # Using readlines()
         file1 = open(MONFILE, 'r')
