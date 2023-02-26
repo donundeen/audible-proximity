@@ -1,7 +1,4 @@
-/* 
-Set up thie code on the puck, using this IDE
-https://www.espruino.com/ide/
-*/
+
 
 const EDDYSTONE_UUID = 'feaa';
 const EDDYSTONE_UID_FRAME = 0x00;
@@ -17,6 +14,11 @@ const DIRACT_INSTANCE_OFFSET = 2;
 const BITS_PER_BYTE = 8;
 
 
+// set up I2C
+I2C1.setup({ scl : D1, sda: D2 });
+
+
+console.log("starting");
 
 const SCAN_OPTIONS = {
     filters: [
@@ -51,6 +53,7 @@ function handleEddystoneUidDevice(serviceData, rssi) {
 
   let unsignedInstanceId = new Uint32Array([instanceId])[0];
   console.log(unsignedInstanceId, rssi);
+  sendI2C(unsignedInstanceId, rssi);
 }
 
 /**
@@ -70,6 +73,21 @@ function handleDiscoveredDevice(device) {
 
 
 
+
+function sendI2C(id, rssi){
+  digitalWrite(LED2,1)
+  console.log("sending?");
+  
+  I2C1.writeTo(0x12, id.toString() + ":"+rssi.toString());
+  // I2C1.writeTo({address:12, stop:false}, 0);
+
+
+  console.log("sent?");
+  digitalWrite(LED2,0)
+
+
+}
+
 NRF.setScan(handleDiscoveredDevice, SCAN_OPTIONS);  // Start scanning
 
-
+//setInterval(sendI2C, 3000);
