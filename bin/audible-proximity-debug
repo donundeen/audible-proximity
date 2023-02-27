@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-const AudibleProximity = require('../lib/audibleproximityV4.js');
+const AudibleProximity = require('../lib/audibleproximityV5.js');
 
 let audiprox = new AudibleProximity({ isDebug: true });
