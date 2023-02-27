@@ -12,6 +12,7 @@ def i2cInterrupt(event, tick):
 
    if bytes_read:
       sys.stdout.write(data.decode("utf-8"))
+//      sys.stdout.write("\n");
       sys.stdout.flush()
 
 pi = pigpio.pi()
