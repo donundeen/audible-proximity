@@ -11,8 +11,7 @@ def i2cInterrupt(event, tick):
    status, bytes_read, data = pi.bsc_i2c(slave_addr)
 
    if bytes_read:
-      print(data.decode("utf-8"))
-      print(" ")
+      sys.stdout.write(data.decode("utf-8"))
       sys.stdout.flush()
 
 pi = pigpio.pi()
